@@ -99,20 +99,20 @@ function getWeatherPerDay(weatherArray){
       weatherPerDay[date].temp = Math.max(weatherPerDay[date].temp, weatherEntry.main.temp);
       weatherPerDay[date].wind = Math.max(weatherPerDay[date].wind, weatherEntry.wind.speed);
       weatherPerDay[date].humidity = Math.max(weatherPerDay[date].humidity, weatherEntry.main.humidity);
-      weatherPerDay[date].weatherType.push(weatherEntry.weather[0].main);
-      // need to add something to include adding weather icon and description
+      if(parseInt(weatherEntry.weather[0].icon, 24) > parseInt(weatherPerDay[date].weatherIcon, 24)){
+        weatherPerDay[date].weatherIcon = weatherEntry.weather[0].icon;
+      }
     } else {
       weatherPerDay[date] = {
         'temp': null,
         'wind': null,
         'humidity': null,
-        'weatherType': [],
+        'weatherIcon': null,
       }
       weatherPerDay[date].temp = weatherEntry.main.temp;
       weatherPerDay[date].wind = weatherEntry.wind.speed;
       weatherPerDay[date].humidity = weatherEntry.main.humidity;
-      weatherPerDay[date].weatherType.push(weatherEntry.weather[0].main);
-      // need to add something to include adding weather icon and description
+      weatherPerDay[date].weatherIcon = weatherEntry.weather[0].icon;
     }
   });
   return weatherPerDay
