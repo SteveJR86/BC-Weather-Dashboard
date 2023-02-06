@@ -1,0 +1,12 @@
+.weather-header {
+  background-image: linear-gradient(to right, blue, black);
+}
+
+.list-group-item {
+  margin-bottom: 10px;
+}
+
+.card {
+  background-color: grey;
+  /* margin-right: 10px; */
+}
